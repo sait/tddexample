@@ -1,0 +1,25 @@
+
+
+Especificacion de Nota
+
+
+Una nota inicia vacia
+ * Con el cliente esta vacio
+ * Con 0 cero partidas
+ * Con el monto de total en 0 cero
+
+Cuando la nota se define el cliente
+ * La nota debe de tener el nombre del cliente definido
+
+Cuando se agrega un articulo
+ * La nota debe de tener una partida mas
+ * Se debe de calcular el importe
+ * Se debe de acumular el importe al total de la nota
+
+Cuando se modifica una partida
+ * si la cantidad se modifica a cero, la partida se elimina
+ * si la cantidad se modifica, debe de calcular el importe
+
+Cuando se elimina una partida
+ * La nota debe de tener una partida menos
+ * El total de la nota debe de ser menos el importe de la partida eliminada
