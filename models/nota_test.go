@@ -5,7 +5,6 @@ import (
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
-	"github.com/sait/tddexample/models"
 )
 
 func TestNota(t *testing.T) {
@@ -17,7 +16,7 @@ var _ = Describe("Una nota de compra", func() {
 
 	Context("Inicialmente Tiene ", func() {
 		//se crea una nueva nota
-		nota := new(models.Nota)
+		nota := new(Nota)
 
 		It("cliente vacio", func() {
 			Expect(nota.GetCliente()).Should(BeEmpty())
@@ -34,7 +33,7 @@ var _ = Describe("Una nota de compra", func() {
 
 	Context("Cuando se define el cliente", func() {
 		//se crea una nueva nota
-		nota := new(models.Nota)
+		nota := new(Nota)
 		//se define el valor del cliente
 		nota.SetCliente("Jose Perez Leon")
 
@@ -45,13 +44,13 @@ var _ = Describe("Una nota de compra", func() {
 
 	Context("Cuando se agrega un articulo", func() {
 		//se crea una nueva nota
-		nota := new(models.Nota)
+		nota := new(Nota)
 		//se obtiene total antes de agregar y el no partidas
 		totalinicial := nota.GetTotal()
 		nopartidas := nota.CountPartidas()
 
 		//se agrega una partida a la nota
-		partida1 := &models.Partida{Id: 1, Descripcion: "ABRECUBETAS MAX", Cantidad: 3, Precio: 40.50}
+		partida1 := &Partida{Id: 1, Descripcion: "ABRECUBETAS MAX", Cantidad: 3, Precio: 40.50}
 		nota.AddPartida(partida1)
 
 		It(" tiene 1 partida mas", func() {
@@ -69,11 +68,11 @@ var _ = Describe("Una nota de compra", func() {
 
 	Context("Cuando se modifica la cantidad de la partida", func() {
 		//se crea una nueva nota
-		nota := new(models.Nota)
+		nota := new(Nota)
 		//se obtiene total antes de agregar
 		totalinicial := nota.GetTotal()
 		//se agrega una partida a la nota
-		partida1 := &models.Partida{Id: 1, Descripcion: "ABRECUBETAS MAX", Cantidad: 3, Precio: 40.50}
+		partida1 := &Partida{Id: 1, Descripcion: "ABRECUBETAS MAX", Cantidad: 3, Precio: 40.50}
 		nota.AddPartida(partida1)
 		//se obtiene partida a modificar
 		partida2 := nota.GetPartida(1)
@@ -89,7 +88,7 @@ var _ = Describe("Una nota de compra", func() {
 		})
 
 		Context("si es 0 cero", func() {
-			nota.AddPartida(&models.Partida{Id: 2, Descripcion: "LAVAPLATOS 3000 TURBO", Cantidad: 8, Precio: 10})
+			nota.AddPartida(&Partida{Id: 2, Descripcion: "LAVAPLATOS 3000 TURBO", Cantidad: 8, Precio: 10})
 			partida3 := nota.GetPartida(2) //se obtiene partida a modificar
 			partida3.Cantidad = 0
 			nota.UpdPartida(partida3)
@@ -102,9 +101,9 @@ var _ = Describe("Una nota de compra", func() {
 
 	Context("Cuando se elimina una partida", func() {
 		//se crea una nueva nota
-		nota := new(models.Nota)
+		nota := new(Nota)
 		//se agrega una partida a la nota
-		partida1 := &models.Partida{Id: 1, Descripcion: "ABRECUBETAS MAX", Cantidad: 3, Precio: 40.50}
+		partida1 := &Partida{Id: 1, Descripcion: "ABRECUBETAS MAX", Cantidad: 3, Precio: 40.50}
 		nota.AddPartida(partida1)
 		//se cuentan las partidas iniciales
 		totalinicial := nota.GetTotal()
