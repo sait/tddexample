@@ -23,7 +23,7 @@ install:
   - go get -v -t ./...
 
 build_script:
-  - go test -v ./..
+  - go test -v ./...
 
 notifications:
     # Opcional

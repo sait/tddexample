@@ -1,5 +1,8 @@
-package tddexample
+package main
 
-func init() {
+import "fmt"
+
+func main() {
 	//TODO: Iniciar App
+	fmt.Println("Hola Mundo TDD")
 }
