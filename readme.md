@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/sait/tddexample.svg?branch=master)](https://travis-ci.org/sait/tddexample)
+[![Build status](https://ci.appveyor.com/api/projects/status/w8bjo1a5vr43frvn?svg=true)](https://ci.appveyor.com/project/xerardoo/tddexample)
 
 
 # Ejemplo de TDD
@@ -32,3 +33,26 @@ cd test/
 go test -v
 
 ```
+
+
+###Documentacion Relacionada
+
+*Test Driven Development en Go con Ginkgo y Gomega* ~
+https://www.youtube.com/watch?v=5PMuFfBjpuQ
+
+*Ginkgo and Gomega: BDD-style Testing in Go with Onsi Fakhouri* ~
+1. https://www.youtube.com/watch?v=rGHu8IvGzNM
+2. https://www.youtube.com/watch?v=xn6Erpr2p0o
+3. https://www.youtube.com/watch?v=6XbEyZYNp4g
+
+*Ginkgo y Gomega* ~
+https://semaphoreci.com/community/tutorials/getting-started-with-bdd-in-go-using-ginkgo
+
+*Configurar AppVeyor CI* ~
+https://blog.markvincze.com/setting-up-an-appveyor-pipeline-for-golang/
+
+*Ejemplo AppVeyor.yml* ~
+https://www.appveyor.com/docs/appveyor-yml/
+
+*Webinar sobre Integración Continua - atSistemas* ~
+https://www.youtube.com/watch?v=uizji8-I5_w
