@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/sait/golang-tdd-example.svg?branch=master)](https://travis-ci.org/sait/golang-tdd-example)
+
+
 # Ejemplo de TDD
  Ejemplo de como desarrollar una app guiado por pruebas
 
