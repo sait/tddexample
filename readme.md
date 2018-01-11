@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/sait/golang-tdd-example.svg?branch=master)](https://travis-ci.org/sait/golang-tdd-example)
+[![Build Status](https://travis-ci.org/sait/tddexample.svg?branch=master)](https://travis-ci.org/sait/tddexample)
 
 
 # Ejemplo de TDD
