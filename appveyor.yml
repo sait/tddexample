@@ -15,6 +15,9 @@ environment:
 install:
   - echo %PATH%
   - echo %GOPATH%
+  - echo %GOROOT%
+  - set GOROOT=
+  - echo %GOROOT%
   - set PATH=%GOPATH%\bin;c:\go\bin;%PATH%
   - go version
   - go env
@@ -29,5 +32,5 @@ notifications:
       to:
         - gerardo@saitenlinea.com
         - andres.robledo@saitenlinea.com
-      subject: 'CI Build {{status}}'
+      subject: 'CI Build {{status}} {{commitId}}'
       message: "Hola, {{message}}, {{commitId}}, ..."
