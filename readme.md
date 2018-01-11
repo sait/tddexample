@@ -11,7 +11,7 @@
 - Ginkgo: test framework 
 - Gomega: libreria de asersiones
 - www.appveyor.com: CI Integracion Continua en Windows
-- www.travis.org: CI Integracion Continua en Linux
+- www.travis-ci.org: CI Integracion Continua en Linux
 
 
 ## Metodologia
@@ -35,7 +35,7 @@ go test -v ./...
 ```
 
 
-###Documentacion Relacionada
+### Documentacion Relacionada
 
 *Test Driven Development en Go con Ginkgo y Gomega* ~
 https://www.youtube.com/watch?v=5PMuFfBjpuQ
