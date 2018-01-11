@@ -10,6 +10,8 @@
 - Go
 - Ginkgo: test framework 
 - Gomega: libreria de asersiones
+- www.appveyor.com: CI Integracion Continua en Windows
+- www.travis.org: CI Integracion Continua en Linux
 
 
 ## Metodologia
@@ -26,11 +28,9 @@
 ## Ejecutar pruebas
 
 ```
-#cambiar de directorio
-cd test/
-
 # poner parametro "-v" para ver mas detalle en las pruebas
-go test -v
+
+go test -v ./...
 
 ```
 
