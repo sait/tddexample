@@ -11,12 +11,11 @@ clone_folder: c:\gopath\src\github.com\sait\tddexample
 
 environment:
   GOPATH: c:\gopath
+  GOVERSION: 1.7
 
 install:
   - echo %PATH%
   - echo %GOPATH%
-  - echo %GOROOT%
-  - set GOROOT=
   - echo %GOROOT%
   - set PATH=%GOPATH%\bin;c:\go\bin;%PATH%
   - go version
