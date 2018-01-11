@@ -15,10 +15,9 @@ func TestNota(t *testing.T) {
 
 var _ = Describe("Una nota de compra", func() {
 
-	//se crea una nueva nota
-	nota := &models.Nota{}
-
 	Context("Inicialmente Tiene ", func() {
+		//se crea una nueva nota
+		nota := new(models.Nota)
 
 		It("cliente vacio", func() {
 			Expect(nota.GetCliente()).Should(BeEmpty())
@@ -34,75 +33,93 @@ var _ = Describe("Una nota de compra", func() {
 	})
 
 	Context("Cuando se define el cliente", func() {
-
+		//se crea una nueva nota
+		nota := new(models.Nota)
 		//se define el valor del cliente
 		nota.SetCliente("Jose Perez Leon")
 
-		It("la nota tiene definido el valor dado", func() {
+		It("el atributo de cliente debe de ser igual al asignado", func() {
 			Expect(nota.Cliente).Should(Equal("Jose Perez Leon"))
 		})
 	})
 
 	Context("Cuando se agrega un articulo", func() {
-
-		//se obtiene total antes de agregar
-		totalnota := nota.GetTotal()
+		//se crea una nueva nota
+		nota := new(models.Nota)
+		//se obtiene total antes de agregar y el no partidas
+		totalinicial := nota.GetTotal()
+		nopartidas := nota.CountPartidas()
 
 		//se agrega una partida a la nota
-		partida1 := models.Partida{Id: 1, Descripcion: "ABRECUBETAS MAX", Cantidad: 3, Precio: 40.50}
+		partida1 := &models.Partida{Id: 1, Descripcion: "ABRECUBETAS MAX", Cantidad: 3, Precio: 40.50}
 		nota.AddPartida(partida1)
 
-		It("la nota tiene 1 partida mas", func() {
-			Expect(nota.CountPartidas()).Should(Equal(nota.CountPartidas() + 1))
+		It(" tiene 1 partida mas", func() {
+			Expect(nota.CountPartidas()).Should(Equal(nopartidas + 1))
 		})
 
-		It("el importe de la partida se calcula", func() {})
+		It("y el importe de la partida se calcula", func() {
+			Expect(partida1.Importe).To(Equal(partida1.Precio * partida1.Cantidad))
+		})
+
 		Specify("se acumula el importe de la factura al total de la nota", func() {
-			Expect(nota.GetTotal()).Should(Equal(totalnota + partida1.GetImporte()))
+			Expect(nota.GetTotal()).Should(Equal(totalinicial + partida1.GetImporte()))
 		})
 	})
 
 	Context("Cuando se modifica la cantidad de la partida", func() {
-		//se  obtiene el total antes de actualizar
-		totalnota := nota.GetTotal()
-
-		partida2 := nota.GetPartida(1) //se obtiene partida a modificar
-		partida2.Cantidad = 6
+		//se crea una nueva nota
+		nota := new(models.Nota)
+		//se obtiene total antes de agregar
+		totalinicial := nota.GetTotal()
+		//se agrega una partida a la nota
+		partida1 := &models.Partida{Id: 1, Descripcion: "ABRECUBETAS MAX", Cantidad: 3, Precio: 40.50}
+		nota.AddPartida(partida1)
+		//se obtiene partida a modificar
+		partida2 := nota.GetPartida(1)
+		partida2.Cantidad = 5
 		nota.UpdPartida(partida2)
 
-		//se calcula importe que debe de dar
-		importe := partida2.Cantidad * partida2.Precio
-
 		It("se re calcula el importe", func() {
-			Expect(partida2.Importe).Should(Equal(importe))
+			Expect(partida2.GetImporte()).Should(Equal(partida2.Cantidad * partida2.Precio))
 		})
 
-		Specify("se actualiza el total de la nota", func() {
-			Expect(nota.GetTotal()).Should(Equal(totalnota + importe))
+		It("se actualiza el total de la nota", func() {
+			Expect(nota.GetTotal()).Should(Equal(totalinicial + partida2.GetImporte()))
 		})
 
 		Context("si es 0 cero", func() {
-
-			partida2 := nota.GetPartida(1) //se obtiene partida a modificar
-			partida2.Cantidad = 0
-			nota.UpdPartida(partida2)
+			nota.AddPartida(&models.Partida{Id: 2, Descripcion: "LAVAPLATOS 3000 TURBO", Cantidad: 8, Precio: 10})
+			partida3 := nota.GetPartida(2) //se obtiene partida a modificar
+			partida3.Cantidad = 0
+			nota.UpdPartida(partida3)
 
 			It("la partida se elimina", func() {
-				Expect(nota.Exist(partida2.Id)).Should(BeFalse())
+				Expect(nota.Exist(partida3.Id)).Should(BeFalse())
 			})
 		})
 	})
 
 	Context("Cuando se elimina una partida", func() {
-
-		totalpartidas := nota.CountPartidas()
+		//se crea una nueva nota
+		nota := new(models.Nota)
+		//se agrega una partida a la nota
+		partida1 := &models.Partida{Id: 1, Descripcion: "ABRECUBETAS MAX", Cantidad: 3, Precio: 40.50}
+		nota.AddPartida(partida1)
+		//se cuentan las partidas iniciales
+		totalinicial := nota.GetTotal()
+		partidasiniciales := nota.CountPartidas()
+		importepartida := partida1.GetImporte()
+		//se elimina partida id=1
 		nota.DltPartida(1)
 
-		It("la nota debe de tener una partida menos", func() {
-			Expect(nota.CountPartidas()).Should(Equal(totalpartidas - 1))
+		It("debe de tener una partida menos", func() {
+			Expect(nota.CountPartidas()).Should(Equal(partidasiniciales - 1))
 		})
 
-		Specify("el total de la nota se actualiza", func() {})
+		Specify("el total de la nota se actualiza", func() {
+			Expect(nota.GetTotal()).To(Equal(totalinicial - importepartida))
+		})
 	})
 
 })
