@@ -1,0 +1,33 @@
+version: 0.1.{build}
+
+branches:
+  only:
+  - master
+
+#os: Windows Server 2012 R2
+platform: Any CPU
+
+clone_folder: c:\gopath\src\github.com\sait\tddexample
+
+environment:
+  GOPATH: c:\gopath
+
+install:
+  - echo %PATH%
+  - echo %GOPATH%
+  - set PATH=%GOPATH%\bin;c:\go\bin;%PATH%
+  - go version
+  - go env
+  - go get -v -t ./...
+
+build_script:
+  - go test -v ./..
+
+notifications:
+    # Opcional
+    - provider: Email
+      to:
+        - gerardo@saitenlinea.com
+        - andres.robledo@saitenlinea.com
+      subject: 'CI Build {{status}}'
+      message: "Hola, {{message}}, {{commitId}}, ..."
