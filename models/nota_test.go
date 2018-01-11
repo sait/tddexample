@@ -19,7 +19,7 @@ var _ = Describe("Una nota de compra", func() {
 		//se crea una nueva nota
 		nota := new(models.Nota)
 
-		It("cliente vacgolang-tdd-exampleio", func() {
+		It("cliente vacio", func() {
 			Expect(nota.GetCliente()).Should(BeEmpty())
 		})
 
