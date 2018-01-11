@@ -5,7 +5,7 @@ import (
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
-	"tddexample/models"
+	"github.com/sait/tddexample/models"
 )
 
 func TestNota(t *testing.T) {
