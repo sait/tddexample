@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"tddexample/models"
+	"github.com/sait/tddexample/models"
 )
 
 func main() {
