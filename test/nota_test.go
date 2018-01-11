@@ -5,7 +5,7 @@ import (
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
-	"NotaFactura/models"
+	"tddexample/models"
 )
 
 func TestNota(t *testing.T) {
@@ -19,7 +19,7 @@ var _ = Describe("Una nota de compra", func() {
 		//se crea una nueva nota
 		nota := new(models.Nota)
 
-		It("cliente vacio", func() {
+		It("cliente vacgolang-tdd-exampleio", func() {
 			Expect(nota.GetCliente()).Should(BeEmpty())
 		})
 
