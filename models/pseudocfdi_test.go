@@ -1,4 +1,4 @@
-package test
+package models
 
 import (
 	"testing"
@@ -6,9 +6,10 @@ import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 	. "github.com/sait/tddexample/models"
+	"fmt"
 )
 
-func TestNota(t *testing.T) {
+func TestPsuedoCFDI(t *testing.T) {
 	RegisterFailHandler(Fail)
 	RunSpecs(t, "PseudoCfdi Test Suite")
 }
@@ -22,6 +23,9 @@ var _ = Describe("Un cfdi tipo ingreso", func() {
 	partida2 := &Partida{Id: 2, Descripcion: "TALLADOR TURBO", Cantidad: 50, Precio: 10}
 	nota.AddPartida(partida1)
 	nota.AddPartida(partida2)
+
+	_,data:=nota.ToXML()
+	fmt.Println(data)
 
 	Context("Para poder facturar debe de tener por lo menos ", func() {
 		It("cliente", func() {
@@ -61,6 +65,9 @@ var _ = Describe("Un cfdi tipo ingreso", func() {
 				It("la cantidad debe de ser", func() {})
 				It("el precio debe de ser", func() {})
 			})
+
+			_,data:=nota.ToXML()
+			fmt.Println(data)
 		})
 	})
 })
