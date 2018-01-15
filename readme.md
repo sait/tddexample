@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/sait/tddexample.svg?branch=master)](https://travis-ci.org/sait/tddexample)
 [![Build status](https://ci.appveyor.com/api/projects/status/w8bjo1a5vr43frvn?svg=true)](https://ci.appveyor.com/project/xerardoo/tddexample)
+[![Build status](https://goreportcard.com/badge/github.com/sait/tddexample)](https://goreportcard.com/report/github.com/sait/tddexample)
 
 
 # Ejemplo de TDD
